@@ -39,13 +39,14 @@ def sfc_css():
 @register.simple_tag
 def sfc_js():
     tpls = [t for name, t in registry.templates.items() if name in registry.queue]
+    tags = f"<script type='module' src='{static('sfc/component.js')}'></script>"
     js = [f"var tpl = `{t.html.render()}`\n{t.js.render()}" for t in tpls]
 
     if settings.SFC_COMPILE == "inline":
         js = "\n".join(js)
-        js = f"<script type='module'>\n{js}\n</script>"
+        tags += f"<script type='module'>\n{js}\n</script>"
     else:
         link = "<script type='module' src='{name}.js'></script>"
-        js = "\n".join([link.format(name=static(x.file_name)) for x in tpls if x.js.render()])
-
-    return mark_safe(js)
+        tags += "\n".join([link.format(name=static(x.file_name)) for x in tpls if x.js.render()])
+    registry.queue = set()
+    return mark_safe(tags)

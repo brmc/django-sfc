@@ -26,7 +26,13 @@ class T(TemplateView):
     def get_context_data(self, **kwargs):
         return {**kwargs, "list_a": [1,2,3], "list_b": [6,7,8]}
 
+
+class O(TemplateView):
+    template_name = 'other.html'
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', T.as_view()),
+    path('other/', O.as_view()),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
