@@ -1,0 +1,22 @@
+{% load sfc sfc_app %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel='stylesheet' href=''>
+  <style>
+    body {
+      background-color: hsl(30, 11%, 15%);
+    }
+  </style>
+  {% sfc_css %}
+</head>
+<body>
+  {% list a=items %}
+  {% dropdown header="Here's a list" items=list_a %}
+  {% dropdown header="Better list" items=list_b %}
+  <script type='module' src='/static/sfc/component.js'></script>
+  {% sfc_js %}
+</body>
+</html>

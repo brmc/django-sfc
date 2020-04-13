@@ -1,0 +1,23 @@
+<style>
+  body {
+    color: hsl(45, 100%, 67%)
+  }
+</style>
+
+<template>
+  <ul data-cmp='list' data-dj-list>
+    {% for foo in a %}
+      <li>{{ foo }}</li>
+    {% endfor %}
+  </ul>
+</template>
+
+<script>
+  import { DjangoComponent, registry } from '/static/sfc/component.js'
+
+  export class List extends DjangoComponent {
+    connectedCallback () {}
+
+  }
+  registry.registerComponent('list', List)
+</script>
