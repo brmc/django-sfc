@@ -21,7 +21,7 @@ sys.path.insert(0, lib_dir.as_posix())
 SECRET_KEY = 'vg2@tnb^ft998jd+!17i*4nt683*r8+&=y5dja&i29on5_6r3t'
 
 DEBUG = True
-STATIC_ROOT = "/home/brian/dev/django/components/example/static"
+STATIC_ROOT = os.path.join(BASE_DIR, 'components', 'example', 'static')
 ALLOWED_HOSTS = []
 SFC_COMPILE = 'file'
 

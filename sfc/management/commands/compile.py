@@ -36,8 +36,9 @@ class Command(BaseCommand):
                 while not (static_dir := static_dir_map.get(matching_app_dirs.pop())):
                     pass
             except IndexError as e:
-                raise Exception(f"No static directory found for the app that contains {tpl.name}. Did you forget to "
-                                f"create it?")
+                msg = (f"No static directory found for the app that contains {tpl.name}. "
+                       f"Did you forget to create it?")
+                raise Exception(msg)
             file_name = Path(static_dir) / tpl.file_name
             if js := tpl.js.render():
                 create_file(js, file_name, '.js')

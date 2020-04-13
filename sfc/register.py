@@ -28,7 +28,8 @@ class ScfNode:
         self.data = None
         self.load(template.source)
         self.name = template.name
-        self.deps = [r.token.contents.split(' ')[-1] for r in template.compile_nodelist() if isinstance(r, LoadNode)]
+        self.deps = [r.token.contents.split(' ')[-1]
+                     for r in template.compile_nodelist() if isinstance(r, LoadNode)]
 
     def render(self):
         return self.data.strip("\n")
