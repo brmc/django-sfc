@@ -1,0 +1,9 @@
+{
+  "name": "django-sfc",
+  "version": "1.0.0",
+  "main": "sfc/static/sfc/component.js",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^3.8.3"
+  }
+}
